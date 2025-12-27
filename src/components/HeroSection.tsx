@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowDown, Briefcase } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown, FileText } from 'lucide-react';
 import profileImage from '@/assets/profile.png';
 
 const socialLinks = [
@@ -27,11 +27,12 @@ const HeroSection = () => {
     }
   };
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const openResume = () => {
+    window.open('/VISHWA-RESUME.pdf', '_blank');
+  };
+
+  const openLinkedIn = () => {
+    window.open('https://linkedin.com/in/vishwakumarv/', '_blank');
   };
 
   return (
@@ -63,20 +64,35 @@ const HeroSection = () => {
 
         {/* CTAs */}
         <div className="animate-fade-up-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          {/* View Projects - Left */}
           <button
             onClick={scrollToProjects}
-            className="group inline-flex items-center gap-2 px-8 py-3 rounded-md border border-white/30 text-white font-medium hover:bg-white/10 transition-all duration-200"
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-md border border-white/30 text-white font-medium hover:bg-white/10 transition-all duration-200"
           >
             View Projects
             <ArrowDown size={18} className="group-hover:translate-y-0.5 transition-transform" />
           </button>
           
+          {/* Hire Me - Center with glowing border */}
           <button
-            onClick={scrollToContact}
-            className="group inline-flex items-center gap-2 px-8 py-3 rounded-md bg-white text-[hsl(0,0%,8%)] font-semibold hover:bg-white/90 transition-all duration-200"
+            onClick={openLinkedIn}
+            className="relative group inline-flex items-center justify-center gap-2 px-8 py-3 rounded-md bg-white text-[hsl(0,0%,8%)] font-semibold transition-all duration-200 hover:scale-105"
+            style={{
+              boxShadow: '0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.1)',
+              animation: 'pulseGlow 2s ease-in-out infinite',
+            }}
           >
-            <Briefcase size={18} />
+            <Linkedin size={18} />
             Hire Me
+          </button>
+
+          {/* View Resume - Right */}
+          <button
+            onClick={openResume}
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-md border border-white/30 text-white font-medium hover:bg-white/10 transition-all duration-200"
+          >
+            <FileText size={18} />
+            View Resume
           </button>
         </div>
 
@@ -103,6 +119,18 @@ const HeroSection = () => {
           <div className="w-0.5 h-1.5 rounded-full bg-white/50 animate-bounce" />
         </div>
       </div>
+
+      {/* Glowing animation keyframes */}
+      <style>{`
+        @keyframes pulseGlow {
+          0%, 100% {
+            box-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.1);
+          }
+          50% {
+            box-shadow: 0 0 30px rgba(255,255,255,0.6), 0 0 60px rgba(255,255,255,0.4), 0 0 80px rgba(255,255,255,0.2);
+          }
+        }
+      `}</style>
     </section>
   );
 };

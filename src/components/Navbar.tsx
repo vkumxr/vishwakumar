@@ -80,20 +80,18 @@ const Navbar = () => {
     return isHomePage && activeSection === item.href.slice(1);
   };
 
-  // Determine text colors based on whether we're in the hero section
-  // Hero section has inverted colors (dark bg, light text)
-  const textColor = isInHero ? 'text-background' : 'text-foreground';
-  const textColorMuted = isInHero ? 'text-background/60' : 'text-foreground/60';
-  const hoverBg = isInHero ? 'hover:bg-background/10' : 'hover:bg-foreground/10';
-  const activeBg = isInHero ? 'bg-background/10' : 'bg-foreground/10';
+  // Hero section is now light (section-light), so we use dark text colors
+  // When scrolled past hero, check if we're on a dark or light section
+  const textColor = 'text-foreground';
+  const textColorMuted = 'text-muted-foreground';
+  const hoverBg = 'hover:bg-foreground/5';
+  const activeBg = 'bg-foreground/10';
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? isInHero 
-            ? 'bg-foreground/95 backdrop-blur-sm' 
-            : 'bg-background/95 backdrop-blur-sm shadow-sm'
+          ? 'bg-background/95 backdrop-blur-sm shadow-sm'
           : 'bg-transparent'
       }`}
     >
@@ -104,16 +102,16 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <li key={item.href}>
                 {item.isSection ? (
                   <button
                     onClick={() => handleNavClick(item)}
-                    className={`text-sm font-medium transition-colors duration-200 ${
+                    className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
                       isActive(item)
-                        ? textColor
-                        : `${textColorMuted} hover:${textColor}`
+                        ? `${textColor} ${activeBg}`
+                        : `${textColorMuted} hover:${textColor} ${hoverBg}`
                     }`}
                   >
                     {item.label}
@@ -121,10 +119,10 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to={item.href}
-                    className={`text-sm font-medium transition-colors duration-200 ${
+                    className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
                       isActive(item)
-                        ? textColor
-                        : `${textColorMuted} hover:${textColor}`
+                        ? `${textColor} ${activeBg}`
+                        : `${textColorMuted} hover:${textColor} ${hoverBg}`
                     }`}
                   >
                     {item.label}

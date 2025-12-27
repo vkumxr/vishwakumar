@@ -20,7 +20,7 @@ const ExperienceSection = () => {
   const { ref, isInView } = useInView({ threshold: 0.2 });
 
   return (
-    <section id="experience" className="py-24 md:py-32 px-6 section-dark overflow-hidden relative">
+    <section id="experience" className="py-24 md:py-32 px-6 section-dark overflow-hidden relative grid-bg-light">
       {/* Faded background terminal elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
         <div 
@@ -39,10 +39,14 @@ const ExperienceSection = () => {
         </div>
       </div>
 
+      {/* Gradient accents */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-background/5 to-transparent pointer-events-none rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-background/5 to-transparent pointer-events-none rounded-full blur-3xl" />
+
       <div ref={ref} className={`container mx-auto max-w-3xl relative z-10 ${isInView ? 'section-bounce' : 'opacity-0'}`}>
         <div className="section-header">
-          <p className="section-label">Where I've worked</p>
-          <h2 className="section-title">Experience</h2>
+          <p className="section-label text-background/60">Where I've worked</p>
+          <h2 className="section-title shimmer-text-light">Experience</h2>
         </div>
 
         <div className="space-y-8">
@@ -55,10 +59,10 @@ const ExperienceSection = () => {
               style={{ transitionDelay: `${index * 150 + 100}ms` }}
             >
               {/* Timeline */}
-              <div className="absolute left-[7px] top-4 bottom-0 w-px bg-background/30" />
-              <div className="absolute left-0 top-1 w-[15px] h-[15px] rounded-full bg-background border-4 border-foreground" />
+              <div className="absolute left-[7px] top-4 bottom-0 w-px bg-gradient-to-b from-background/50 to-background/10" />
+              <div className="timeline-dot-pulse" />
               
-              <div className="bg-background/5 border border-background/10 rounded-lg p-6 transition-all duration-300 hover:border-background/20 ml-4">
+              <div className="bg-background/5 border border-background/10 rounded-lg p-6 transition-all duration-300 hover:border-background/30 hover:bg-background/10 ml-4 backdrop-blur-sm">
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold text-background">{exp.title}</h3>
                   <p className="text-background/80 font-medium">{exp.company}</p>

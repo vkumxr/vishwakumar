@@ -5,12 +5,16 @@ const AboutSection = () => {
   const { ref, isInView } = useInView({ threshold: 0.2 });
 
   return (
-    <section id="about" className="py-24 md:py-32 px-6 section-dark overflow-hidden">
-      <div ref={ref} className={`container mx-auto max-w-6xl ${isInView ? 'section-bounce' : 'opacity-0'}`}>
+    <section id="about" className="py-24 md:py-32 px-6 section-dark overflow-hidden relative grid-bg-light">
+      {/* Gradient orbs */}
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-background/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-background/3 rounded-full blur-3xl pointer-events-none" />
+
+      <div ref={ref} className={`container mx-auto max-w-6xl relative z-10 ${isInView ? 'section-bounce' : 'opacity-0'}`}>
         {/* Centered Header */}
         <div className="section-header text-center mb-12">
-          <p className="section-label">Get to know me</p>
-          <h2 className="section-title">About</h2>
+          <p className="section-label text-background/60">Get to know me</p>
+          <h2 className="section-title shimmer-text-light">About</h2>
         </div>
 
         <div className="relative flex flex-col lg:flex-row lg:items-center lg:gap-12">

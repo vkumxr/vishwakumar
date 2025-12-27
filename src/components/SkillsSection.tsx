@@ -28,7 +28,7 @@ const SkillsSection = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
   return (
-    <section id="skills" className="py-24 md:py-32 px-6 section-light overflow-hidden relative">
+    <section id="skills" className="py-24 md:py-32 px-6 section-light overflow-hidden relative grid-bg">
       {/* Faded background code elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
         <div 
@@ -45,23 +45,27 @@ const SkillsSection = () => {
         </div>
       </div>
 
+      {/* Corner gradient accent */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-foreground/5 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-foreground/5 to-transparent pointer-events-none" />
+
       <div ref={ref} className={`container mx-auto max-w-5xl relative z-10 ${isInView ? 'section-bounce' : 'opacity-0'}`}>
         <div className="section-header">
           <p className="section-label">What I work with</p>
-          <h2 className="section-title">Skills</h2>
+          <h2 className="section-title shimmer-text">Skills</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {skillCategories.map((category, index) => (
             <div
               key={category.title}
-              className={`card-clean transition-all duration-700 ${
+              className={`card-glow corner-accent transition-all duration-700 ${
                 isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${index * 100 + 100}ms` }}
             >
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-md bg-foreground/10 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-md bg-foreground/10 flex items-center justify-center transition-all duration-300 group-hover:bg-foreground/20">
                   <category.icon className="text-foreground" size={20} />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground">{category.title}</h3>
@@ -69,7 +73,7 @@ const SkillsSection = () => {
 
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <span key={skill} className="skill-tag">
+                  <span key={skill} className="skill-tag cursor-default">
                     {skill}
                   </span>
                 ))}

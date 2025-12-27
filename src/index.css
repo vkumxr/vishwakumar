@@ -314,6 +314,16 @@
   animation: typing 4s steps(12) infinite, blink-caret 0.8s step-end infinite;
 }
 
+/* Floating element glow effect */
+.floating-glow {
+  transition: all 0.3s ease-out;
+}
+
+.floating-glow:hover {
+  text-shadow: 0 0 20px hsl(var(--foreground) / 0.3), 0 0 40px hsl(var(--foreground) / 0.2);
+  opacity: 1 !important;
+}
+
 /* Floating Animations */
 @keyframes float-slow {
   0%, 100% {

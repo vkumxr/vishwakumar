@@ -20,8 +20,26 @@ const ExperienceSection = () => {
   const { ref, isInView } = useInView({ threshold: 0.2 });
 
   return (
-    <section id="experience" className="py-24 md:py-32 px-6 section-dark">
-      <div ref={ref} className={`container mx-auto max-w-3xl ${isInView ? 'section-bounce' : 'opacity-0'}`}>
+    <section id="experience" className="py-24 md:py-32 px-6 section-dark overflow-hidden relative">
+      {/* Faded background terminal elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
+        <div 
+          className="absolute top-1/4 right-10 text-background/[0.04] font-mono text-sm leading-relaxed select-none"
+        >
+          <div>$ sudo systemctl start</div>
+          <div>$ npm run deploy</div>
+          <div>$ git push origin main</div>
+        </div>
+        <div 
+          className="absolute bottom-1/4 left-10 text-background/[0.04] font-mono text-sm leading-relaxed select-none"
+        >
+          <div>$ docker-compose up</div>
+          <div>$ kubectl apply -f</div>
+          <div>$ ssh user@server</div>
+        </div>
+      </div>
+
+      <div ref={ref} className={`container mx-auto max-w-3xl relative z-10 ${isInView ? 'section-bounce' : 'opacity-0'}`}>
         <div className="section-header">
           <p className="section-label">Where I've worked</p>
           <h2 className="section-title">Experience</h2>

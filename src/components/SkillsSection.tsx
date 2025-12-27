@@ -28,8 +28,24 @@ const SkillsSection = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
   return (
-    <section id="skills" className="py-24 md:py-32 px-6 section-light">
-      <div ref={ref} className={`container mx-auto max-w-5xl ${isInView ? 'section-bounce' : 'opacity-0'}`}>
+    <section id="skills" className="py-24 md:py-32 px-6 section-light overflow-hidden relative">
+      {/* Faded background code elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
+        <div 
+          className="absolute top-20 right-0 text-foreground/[0.03] font-mono text-[200px] leading-none select-none"
+          style={{ transform: 'rotate(-15deg)' }}
+        >
+          {'</>'}
+        </div>
+        <div 
+          className="absolute bottom-10 left-0 text-foreground/[0.03] font-mono text-[150px] leading-none select-none"
+          style={{ transform: 'rotate(10deg)' }}
+        >
+          {'{ }'}
+        </div>
+      </div>
+
+      <div ref={ref} className={`container mx-auto max-w-5xl relative z-10 ${isInView ? 'section-bounce' : 'opacity-0'}`}>
         <div className="section-header">
           <p className="section-label">What I work with</p>
           <h2 className="section-title">Skills</h2>

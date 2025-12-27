@@ -129,10 +129,10 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-foreground/[0.02] to-foreground/5 pointer-events-none" />
       
       {/* Floating Code/Tech Elements with Parallax - Hidden on mobile */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+      <div className="absolute inset-0 overflow-hidden hidden md:block">
         {/* Code brackets - top right */}
         <div 
-          className="absolute top-20 right-[10%] text-foreground/15 font-mono text-6xl animate-float-slow transition-transform duration-300 ease-out select-none"
+          className="absolute top-20 right-[10%] text-foreground/15 font-mono text-6xl animate-float-slow transition-transform duration-300 ease-out select-none pointer-events-auto floating-glow cursor-default"
           style={{ transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * -30}px)` }}
         >
           {'{ }'}
@@ -140,7 +140,7 @@ const HeroSection = () => {
         
         {/* HTML tag - bottom left */}
         <div 
-          className="absolute bottom-32 left-[8%] text-foreground/15 font-mono text-3xl animate-float-medium transition-transform duration-300 ease-out select-none"
+          className="absolute bottom-32 left-[8%] text-foreground/15 font-mono text-3xl animate-float-medium transition-transform duration-300 ease-out select-none pointer-events-auto floating-glow cursor-default"
           style={{ transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)` }}
         >
           {'</>'}
@@ -148,7 +148,7 @@ const HeroSection = () => {
         
         {/* Terminal prompt - right side with cycling typing animation */}
         <div 
-          className="absolute top-1/2 right-[10%] text-foreground/20 font-mono text-base animate-float-slow transition-transform duration-300 ease-out select-none"
+          className="absolute top-1/2 right-[10%] text-foreground/20 font-mono text-base animate-float-slow transition-transform duration-300 ease-out select-none pointer-events-auto floating-glow cursor-default"
           style={{ transform: `translate(${mousePosition.x * -25}px, ${mousePosition.y * -25}px)` }}
         >
           <div className="flex items-center gap-2">
@@ -161,7 +161,7 @@ const HeroSection = () => {
         
         {/* Terminal prompt - left side with cycling typing animation */}
         <div 
-          className="absolute top-[35%] left-[8%] text-foreground/20 font-mono text-base animate-float-medium transition-transform duration-300 ease-out select-none"
+          className="absolute top-[35%] left-[8%] text-foreground/20 font-mono text-base animate-float-medium transition-transform duration-300 ease-out select-none pointer-events-auto floating-glow cursor-default"
           style={{ transform: `translate(${mousePosition.x * 15}px, ${mousePosition.y * 15}px)` }}
         >
           <div className="flex items-center gap-2">
@@ -174,7 +174,7 @@ const HeroSection = () => {
         
         {/* Arrow function - center right */}
         <div 
-          className="absolute top-[65%] right-[35%] text-foreground/15 font-mono text-lg animate-float-slow transition-transform duration-300 ease-out select-none"
+          className="absolute top-[65%] right-[35%] text-foreground/15 font-mono text-lg animate-float-slow transition-transform duration-300 ease-out select-none pointer-events-auto floating-glow cursor-default"
           style={{ transform: `translate(${mousePosition.x * -12}px, ${mousePosition.y * -12}px)` }}
         >
           {'=>'}
@@ -182,7 +182,7 @@ const HeroSection = () => {
         
         {/* Semicolon - top center */}
         <div 
-          className="absolute top-[15%] left-1/2 text-foreground/15 font-mono text-5xl animate-float-medium transition-transform duration-300 ease-out select-none"
+          className="absolute top-[15%] left-1/2 text-foreground/15 font-mono text-5xl animate-float-medium transition-transform duration-300 ease-out select-none pointer-events-auto floating-glow cursor-default"
           style={{ transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)` }}
         >
           ;
@@ -190,7 +190,7 @@ const HeroSection = () => {
         
         {/* Sudo command - bottom right (near View Resume level) */}
         <div 
-          className="absolute bottom-[28%] right-[5%] text-foreground/20 font-mono text-base transition-transform duration-300 ease-out select-none"
+          className="absolute bottom-[28%] right-[5%] text-foreground/20 font-mono text-base transition-transform duration-300 ease-out select-none pointer-events-auto floating-glow cursor-default"
           style={{ transform: `translateX(${mousePosition.x * -18}px)` }}
         >
           <div className="flex items-center gap-2">
@@ -203,7 +203,7 @@ const HeroSection = () => {
         
         {/* Sudo command - bottom left */}
         <div 
-          className="absolute bottom-[22%] left-[8%] text-foreground/20 font-mono text-base animate-float-slow transition-transform duration-300 ease-out select-none"
+          className="absolute bottom-[22%] left-[8%] text-foreground/20 font-mono text-base animate-float-slow transition-transform duration-300 ease-out select-none pointer-events-auto floating-glow cursor-default"
           style={{ transform: `translate(${mousePosition.x * 12}px, ${mousePosition.y * 12}px)` }}
         >
           <div className="flex items-center gap-2">

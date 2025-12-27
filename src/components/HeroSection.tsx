@@ -38,9 +38,11 @@ const socialLinks = [
 const devCommands = [
   'npm run dev',
   'git commit -m "feat"',
-  'npm install',
-  'git push origin',
+  'npm install react',
+  'git push origin main',
   'npm run build',
+  'yarn add typescript',
+  'npx create-react-app',
 ];
 
 const HeroSection = () => {
@@ -95,7 +97,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         {/* Code brackets - top right */}
         <div 
-          className="absolute top-20 right-[10%] text-foreground/10 font-mono text-6xl animate-float-slow transition-transform duration-300 ease-out select-none"
+          className="absolute top-20 right-[10%] text-foreground/[0.04] font-mono text-6xl animate-float-slow transition-transform duration-300 ease-out select-none"
           style={{ transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * -30}px)` }}
         >
           {'{ }'}
@@ -103,29 +105,19 @@ const HeroSection = () => {
         
         {/* HTML tag - bottom left */}
         <div 
-          className="absolute bottom-32 left-[8%] text-foreground/8 font-mono text-3xl animate-float-medium transition-transform duration-300 ease-out select-none"
+          className="absolute bottom-32 left-[8%] text-foreground/[0.03] font-mono text-3xl animate-float-medium transition-transform duration-300 ease-out select-none"
           style={{ transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)` }}
         >
           {'</>'}
         </div>
         
-        {/* Binary code - top left - styled as matrix */}
-        <div 
-          className="absolute top-32 left-[15%] text-foreground/10 font-mono text-xs animate-float-reverse transition-transform duration-300 ease-out select-none leading-relaxed tracking-wider"
-          style={{ transform: `translate(${mousePosition.x * 15}px, ${mousePosition.y * 15}px)` }}
-        >
-          <div className="opacity-60">1 0 1 1</div>
-          <div className="opacity-40">0 1 0 0</div>
-          <div className="opacity-20">1 1 0 1</div>
-        </div>
-        
         {/* Terminal prompt - right side with cycling typing animation */}
         <div 
-          className="absolute top-1/2 right-[12%] text-foreground/15 font-mono text-lg animate-float-slow transition-transform duration-300 ease-out select-none"
+          className="absolute top-1/2 right-[10%] text-foreground/[0.06] font-mono text-base animate-float-slow transition-transform duration-300 ease-out select-none"
           style={{ transform: `translate(${mousePosition.x * -25}px, ${mousePosition.y * -25}px)` }}
         >
           <div className="flex items-center gap-2">
-            <span className="text-foreground/20">$</span>
+            <span className="text-foreground/[0.08]">$</span>
             <span key={currentCommandIndex} className="typing-animation inline-block">
               {devCommands[currentCommandIndex]}
             </span>
@@ -134,90 +126,42 @@ const HeroSection = () => {
         
         {/* Array brackets - bottom right */}
         <div 
-          className="absolute bottom-40 right-[25%] text-foreground/10 font-mono text-4xl animate-float-medium transition-transform duration-300 ease-out select-none"
+          className="absolute bottom-40 right-[25%] text-foreground/[0.04] font-mono text-4xl animate-float-medium transition-transform duration-300 ease-out select-none"
           style={{ transform: `translate(${mousePosition.x * 18}px, ${mousePosition.y * 18}px)` }}
         >
           [ ]
         </div>
         
-        {/* React useState hook - left side */}
+        {/* useEffect hook - top left */}
         <div 
-          className="absolute top-1/4 left-[5%] text-foreground/8 font-mono text-xs animate-float-reverse transition-transform duration-300 ease-out select-none"
+          className="absolute top-[30%] left-[8%] text-foreground/[0.03] font-mono text-xs animate-float-reverse transition-transform duration-300 ease-out select-none"
           style={{ transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)` }}
-        >
-          {'const [state, setState]'}
-        </div>
-        
-        {/* console.log - right side */}
-        <div 
-          className="absolute top-[40%] right-[5%] text-foreground/10 font-mono text-sm animate-float-slow transition-transform duration-300 ease-out select-none"
-          style={{ transform: `translate(${mousePosition.x * -12}px, ${mousePosition.y * -12}px)` }}
-        >
-          {'console.log()'}
-        </div>
-        
-        {/* async/await - bottom left */}
-        <div 
-          className="absolute bottom-[35%] left-[20%] text-foreground/6 font-mono text-xs animate-float-medium transition-transform duration-300 ease-out select-none"
-          style={{ transform: `translate(${mousePosition.x * 8}px, ${mousePosition.y * 8}px)` }}
-        >
-          {'async () => await'}
-        </div>
-        
-        {/* useEffect hook - top right */}
-        <div 
-          className="absolute top-[25%] right-[20%] text-foreground/8 font-mono text-xs animate-float-reverse transition-transform duration-300 ease-out select-none"
-          style={{ transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * -15}px)` }}
         >
           {'useEffect(() => {})'}
         </div>
         
-        {/* Arrow function - scattered */}
+        {/* Arrow function - center right */}
         <div 
-          className="absolute top-2/3 right-1/3 text-foreground/10 font-mono text-lg animate-float-slow transition-transform duration-300 ease-out select-none"
+          className="absolute top-[65%] right-[35%] text-foreground/[0.05] font-mono text-lg animate-float-slow transition-transform duration-300 ease-out select-none"
           style={{ transform: `translate(${mousePosition.x * -12}px, ${mousePosition.y * -12}px)` }}
         >
           {'=>'}
         </div>
         
-        {/* JSDoc comment */}
-        <div 
-          className="absolute bottom-1/4 left-1/3 text-foreground/6 font-mono text-sm animate-float-medium transition-transform duration-300 ease-out select-none"
-          style={{ transform: `translate(${mousePosition.x * 8}px, ${mousePosition.y * 8}px)` }}
-        >
-          {'/** @type */'}
-        </div>
-        
         {/* Semicolon - top center */}
         <div 
-          className="absolute top-[15%] left-1/2 text-foreground/10 font-mono text-5xl animate-float-medium transition-transform duration-300 ease-out select-none"
+          className="absolute top-[15%] left-1/2 text-foreground/[0.04] font-mono text-5xl animate-float-medium transition-transform duration-300 ease-out select-none"
           style={{ transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)` }}
         >
           ;
         </div>
         
-        {/* Return statement - bottom center */}
+        {/* Console log - bottom left */}
         <div 
-          className="absolute bottom-[20%] left-[45%] text-foreground/8 font-mono text-xs animate-float-reverse transition-transform duration-300 ease-out select-none"
+          className="absolute bottom-[25%] left-[15%] text-foreground/[0.03] font-mono text-xs animate-float-reverse transition-transform duration-300 ease-out select-none"
           style={{ transform: `translate(${mousePosition.x * 14}px, ${mousePosition.y * 14}px)` }}
         >
-          {'return <Component />'}
-        </div>
-        
-        {/* Promise - far left */}
-        <div 
-          className="absolute top-[60%] left-[3%] text-foreground/6 font-mono text-xs animate-float-slow transition-transform duration-300 ease-out select-none"
-          style={{ transform: `translate(${mousePosition.x * 16}px, ${mousePosition.y * 16}px)` }}
-        >
-          {'.then().catch()'}
-        </div>
-        
-        {/* Map function - far right */}
-        <div 
-          className="absolute bottom-[45%] right-[3%] text-foreground/8 font-mono text-xs animate-float-medium transition-transform duration-300 ease-out select-none"
-          style={{ transform: `translate(${mousePosition.x * -18}px, ${mousePosition.y * -18}px)` }}
-        >
-          {'.map((item) => )'}
+          {'console.log()'}
         </div>
       </div>
       <div className="container mx-auto max-w-4xl text-center relative z-10">

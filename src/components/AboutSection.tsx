@@ -7,13 +7,15 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-24 md:py-32 px-6 section-dark overflow-hidden">
       <div ref={ref} className={`container mx-auto max-w-6xl ${isInView ? 'section-bounce' : 'opacity-0'}`}>
+        {/* Centered Header */}
+        <div className="section-header text-center mb-12">
+          <p className="section-label">Get to know me</p>
+          <h2 className="section-title">About</h2>
+        </div>
+
         <div className="relative flex flex-col lg:flex-row lg:items-center lg:gap-12">
           {/* Left side - Content */}
           <div className="relative z-10 lg:w-1/2">
-            <div className="section-header lg:text-left">
-              <p className="section-label">Get to know me</p>
-              <h2 className="section-title">About</h2>
-            </div>
 
             <div className="space-y-6 text-lg leading-relaxed text-background/70">
               <p className={`transition-all duration-700 delay-100 ${

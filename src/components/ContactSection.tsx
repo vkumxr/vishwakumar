@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { useInView } from '../hooks/useInView';
 import { useScrollY } from '../hooks/useParallax';
-import { Github, Linkedin, Mail, MapPin, Phone, Send, Download } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -11,33 +11,6 @@ import { useToast } from '@/hooks/use-toast';
 const EMAILJS_SERVICE_ID = 'service_hbvqs2f';
 const EMAILJS_TEMPLATE_ID = 'template_h66mljm';
 const EMAILJS_PUBLIC_KEY = 'pEkZwmUeWy6anm2tc';
-
-// vCard data
-const generateVCard = () => {
-  const vCardData = `BEGIN:VCARD
-VERSION:3.0
-N:Venkateswaran;Vishwa Kumar;;;
-FN:Vishwa Kumar Venkateswaran
-ORG:
-TITLE:AI & Cybersecurity Engineer
-TEL;TYPE=CELL:+919342236718
-EMAIL:vishwakumarv05@gmail.com
-URL:https://github.com/vkumxr
-URL:https://linkedin.com/in/vishwakumarv/
-ADR;TYPE=HOME:;;Bengaluru;Karnataka;;India
-NOTE:Engineering student specializing in AI-driven systems, cybersecurity, and scalable backend development.
-END:VCARD`;
-
-  const blob = new Blob([vCardData], { type: 'text/vcard' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'vishwa-kumar.vcf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-};
 
 const ContactSection = () => {
   const { ref, isInView } = useInView({ threshold: 0.2 });
@@ -240,20 +213,6 @@ const ContactSection = () => {
                   <Mail size={18} />
                 </a>
               </div>
-            </div>
-
-            {/* Download vCard */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-background">Save Contact</h3>
-              <Button
-                onClick={generateVCard}
-                variant="outline"
-                className="border-background/30 text-background hover:bg-background/10 hover:border-background/50"
-              >
-                <Download size={18} className="mr-2" />
-                Download vCard
-              </Button>
-              <p className="text-background/50 text-xs mt-2">Add me to your contacts instantly</p>
             </div>
           </div>
         </div>

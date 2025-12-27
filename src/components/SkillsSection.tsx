@@ -27,11 +27,11 @@ const skillCategories = [
 ];
 
 const proficiencySkills = [
-  { name: 'Python / Java / C++', level: 90, color: 'bg-foreground' },
-  { name: 'Linux Administration', level: 85, color: 'bg-foreground/90' },
-  { name: 'Cybersecurity (Red/Blue)', level: 75, color: 'bg-foreground/80' },
-  { name: 'AI/ML Integration', level: 70, color: 'bg-foreground/70' },
-  { name: 'Embedded Systems', level: 65, color: 'bg-foreground/60' },
+  { name: 'Python / Java / C++', level: 85, color: 'bg-foreground' },
+  { name: 'Linux Administration', level: 80, color: 'bg-foreground/90' },
+  { name: 'Embedded Systems', level: 60, color: 'bg-foreground/80' },
+  { name: 'Cybersecurity (Red/Blue)', level: 55, color: 'bg-foreground/70' },
+  { name: 'AI/ML Integration', level: 50, color: 'bg-foreground/60' },
 ];
 
 const AnimatedProgressBar = ({ 

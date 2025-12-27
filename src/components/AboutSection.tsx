@@ -28,9 +28,29 @@ const AboutSection = () => {
         </div>
 
         <div className="relative flex flex-col lg:flex-row lg:items-center lg:gap-12">
-          {/* Left side - Content */}
-          <div className="relative z-10 lg:w-1/2">
+          {/* Profile Photo - First on mobile, positioned right on desktop */}
+          <div className="order-1 lg:order-2 mb-8 lg:mb-0 lg:w-1/2 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2">
+            <div className="relative w-full h-[300px] lg:h-[600px]">
+              {/* Mobile gradient - bottom fade */}
+              <div 
+                className="absolute inset-0 z-10 lg:hidden"
+                style={{ background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, hsl(var(--foreground)) 100%)' }}
+              />
+              {/* Desktop gradient - left fade */}
+              <div 
+                className="absolute inset-0 z-10 hidden lg:block"
+                style={{ background: 'linear-gradient(to left, transparent 0%, transparent 30%, hsl(var(--foreground)) 100%)' }}
+              />
+              <img 
+                src={profileImage} 
+                alt="Vishwa Kumar" 
+                className="w-full h-full object-cover object-top lg:object-center opacity-40 grayscale"
+              />
+            </div>
+          </div>
 
+          {/* Content - Second on mobile, positioned left on desktop */}
+          <div className="order-2 lg:order-1 relative z-10 lg:w-1/2">
             <div className="space-y-6 text-lg leading-relaxed text-background/70">
               <p className={`transition-all duration-700 delay-100 ${
                 isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -66,27 +86,6 @@ const AboutSection = () => {
                 When I'm not coding, I'm usually exploring CTF challenges, learning about network protocols, 
                 or experimenting with new automation workflows.
               </p>
-            </div>
-          </div>
-
-          {/* Profile Photo with Gradient - Now visible on all screen sizes */}
-          <div className="mt-8 lg:mt-0 lg:w-1/2 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2">
-            <div className="relative w-full h-[300px] lg:h-[600px]">
-              {/* Mobile gradient - top to bottom fade */}
-              <div 
-                className="absolute inset-0 z-10 lg:hidden"
-                style={{ background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, hsl(var(--foreground)) 100%)' }}
-              />
-              {/* Desktop gradient - left fade */}
-              <div 
-                className="absolute inset-0 z-10 hidden lg:block"
-                style={{ background: 'linear-gradient(to left, transparent 0%, transparent 30%, hsl(var(--foreground)) 100%)' }}
-              />
-              <img 
-                src={profileImage} 
-                alt="Vishwa Kumar" 
-                className="w-full h-full object-cover object-top lg:object-center opacity-40 grayscale"
-              />
             </div>
           </div>
         </div>

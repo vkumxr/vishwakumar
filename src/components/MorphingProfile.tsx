@@ -7,8 +7,8 @@ const MorphingProfile = () => {
   const { scrollY } = useScroll();
   
   // Get the positions of hero and about sections
-  const [heroBottom, setHeroBottom] = useState(0);
-  const [aboutTop, setAboutTop] = useState(0);
+  const [heroBottom, setHeroBottom] = useState(800);
+  const [aboutTop, setAboutTop] = useState(1200);
 
   useEffect(() => {
     setIsMounted(true);
@@ -32,7 +32,7 @@ const MorphingProfile = () => {
   const scrollStart = heroBottom - 400;
   const scrollEnd = aboutTop + 200;
 
-  // Transform values based on scroll
+  // Transform values based on scroll - ALL hooks must be called unconditionally
   const opacity = useTransform(
     scrollY,
     [scrollStart, scrollStart + 100, scrollEnd - 100, scrollEnd],
@@ -69,6 +69,9 @@ const MorphingProfile = () => {
     [1, 0.4]
   );
 
+  // Move the filter transform to top level - this was causing the hook error
+  const filterValue = useTransform(grayscale, (g) => `grayscale(${g})`);
+
   if (!isMounted) return null;
 
   return (
@@ -83,7 +86,7 @@ const MorphingProfile = () => {
         <motion.div
           className="w-32 h-32 rounded-full overflow-hidden border-2 border-foreground/20"
           style={{ 
-            filter: useTransform(grayscale, (g) => `grayscale(${g})`),
+            filter: filterValue,
             opacity: imageOpacity
           }}
         >

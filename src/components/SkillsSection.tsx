@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useInView } from '../hooks/useInView';
 import { useScrollY } from '../hooks/useParallax';
 import { Code2, Wrench, Monitor, Shield } from 'lucide-react';
@@ -25,6 +25,47 @@ const skillCategories = [
     skills: ['Nmap', 'Burp Suite', 'Metasploit', 'Android Debugging', 'Penetration Testing', 'CTF Platforms'],
   },
 ];
+
+const proficiencySkills = [
+  { name: 'Python / Java / C++', level: 90, color: 'bg-foreground' },
+  { name: 'Linux Administration', level: 85, color: 'bg-foreground/90' },
+  { name: 'Cybersecurity (Red/Blue)', level: 75, color: 'bg-foreground/80' },
+  { name: 'AI/ML Integration', level: 70, color: 'bg-foreground/70' },
+  { name: 'Embedded Systems', level: 65, color: 'bg-foreground/60' },
+];
+
+const AnimatedProgressBar = ({ 
+  level, 
+  isInView, 
+  delay,
+  color 
+}: { 
+  level: number; 
+  isInView: boolean; 
+  delay: number;
+  color: string;
+}) => {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    
+    const timer = setTimeout(() => {
+      setWidth(level);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [isInView, level, delay]);
+
+  return (
+    <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+      <div 
+        className={`h-full ${color} rounded-full transition-all duration-1000 ease-out`}
+        style={{ width: `${width}%` }}
+      />
+    </div>
+  );
+};
 
 const SkillsSection = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
@@ -65,6 +106,30 @@ const SkillsSection = () => {
           <h2 className="section-title shimmer-text">Skills</h2>
         </div>
 
+        {/* Proficiency Progress Bars */}
+        <div className={`mb-12 max-w-2xl mx-auto transition-all duration-700 ${
+          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <h3 className="text-lg font-semibold text-foreground mb-6 text-center">Proficiency Levels</h3>
+          <div className="space-y-4">
+            {proficiencySkills.map((skill, index) => (
+              <div key={skill.name}>
+                <div className="flex justify-between items-center mb-1.5">
+                  <span className="text-sm font-medium text-foreground">{skill.name}</span>
+                  <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                </div>
+                <AnimatedProgressBar 
+                  level={skill.level} 
+                  isInView={isInView} 
+                  delay={index * 150 + 300}
+                  color={skill.color}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Skill Categories Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {skillCategories.map((category, index) => (
             <div
@@ -72,7 +137,7 @@ const SkillsSection = () => {
               className={`card-glow corner-accent transition-all duration-700 ${
                 isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
-              style={{ transitionDelay: `${index * 100 + 100}ms` }}
+              style={{ transitionDelay: `${index * 100 + 500}ms` }}
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 rounded-md bg-foreground/10 flex items-center justify-center transition-all duration-300 group-hover:bg-foreground/20">

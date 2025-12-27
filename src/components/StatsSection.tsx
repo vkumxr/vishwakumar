@@ -79,7 +79,7 @@ const StatsSection = () => {
   const scrollY = useScrollY();
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-20 px-6 section-light overflow-hidden relative">
+    <section ref={sectionRef} className="py-16 md:py-20 px-6 section-light overflow-hidden relative dotted-pattern">
       {/* Decorative elements */}
       <div 
         className="absolute top-10 left-10 w-24 h-24 border border-foreground/5 rounded-full pointer-events-none transition-transform duration-100"

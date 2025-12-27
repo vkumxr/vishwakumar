@@ -1,63 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 import { useScrollY } from '../hooks/useParallax';
-import { ArrowUpRight, Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
-
-const projects = [
-  {
-    title: 'ReDroid-AI',
-    subtitle: 'Reverse Engineering Assistant',
-    period: 'Dec 2025 – Present',
-    description: 'AI-powered Linux-based reverse engineering framework for automated static analysis of Android APKs.',
-    techStack: ['Python', 'Linux', 'AI/ML'],
-    githubUrl: 'https://github.com/vkumxr/ReDroid-AI',
-    highlights: [
-      'Automated APK extraction and application inspection workflows',
-      'Modular architecture for analyzing Android internals and security vulnerabilities',
-      'Intelligent analysis pipelines to accelerate vulnerability discovery',
-    ],
-  },
-  {
-    title: 'PuBOT',
-    subtitle: 'Portable Ultra ROBOT',
-    period: 'Aug 2025 – Present',
-    description: 'Modular teleoperated robotics system with AI capabilities.',
-    techStack: ['Raspberry Pi', 'Python', 'Embedded Linux'],
-    githubUrl: 'https://github.com/vkumxr/PuBOT',
-    highlights: [
-      'Integrated DC motors, ultrasonic sensors, and HDMI display for real-time interaction',
-      'Autonomous navigation with conversational AI via voice control',
-      'Hardware-software integration achieving reliable performance through iterative testing',
-    ],
-  },
-  {
-    title: 'IntelliBank AI',
-    subtitle: 'Conversational Banking Assistant',
-    period: 'Jun 2025 – Sept 2025',
-    description: 'Production-ready Java Spring Boot conversational banking assistant with LLM integration.',
-    techStack: ['Java', 'Spring Boot', 'LangChain', 'REST APIs'],
-    githubUrl: 'https://github.com/vkumxr/IntelliBank-AI',
-    highlights: [
-      'RESTful API backend with modular design patterns for scalability',
-      'LLM-based conversational logic for intelligent query processing',
-      'Context-aware response generation improving user experience',
-    ],
-  },
-  {
-    title: 'FruitCutter',
-    subtitle: 'The Classic Fruit Ninja Reimagined',
-    period: '2024',
-    description: 'A nostalgic recreation of the classic Fruit Ninja game built on Scratch with smooth gameplay mechanics.',
-    techStack: ['Scratch', 'Game Design', 'Animation'],
-    githubUrl: 'https://github.com/vkumxr/FruitCutter---The-Classic-Fruit-Ninja-Reimagined',
-    demoUrl: 'https://scratch.mit.edu/projects/1197626235',
-    highlights: [
-      'Smooth slicing mechanics with realistic fruit physics',
-      'Score tracking and combo system for engaging gameplay',
-      'Classic arcade-style visuals with polished animations',
-    ],
-  },
-];
+import { ArrowUpRight, Github, ExternalLink, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
+import { projects } from '../data/projects';
 
 const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
   <div className="group card-clean min-w-[340px] max-w-[340px] flex-shrink-0">
@@ -106,24 +52,31 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
     </ul>
 
     {/* Links */}
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 flex-wrap">
+      <Link
+        to={`/projects/${project.slug}`}
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:underline"
+      >
+        <FileText size={14} />
+        Case Study
+      </Link>
       <a
         href={project.githubUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
       >
-        View on GitHub
+        GitHub
         <ArrowUpRight size={14} />
       </a>
-      {'demoUrl' in project && project.demoUrl && (
+      {project.demoUrl && (
         <a
           href={project.demoUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
-          Live Demo
+          Demo
           <ExternalLink size={14} />
         </a>
       )}
@@ -271,7 +224,7 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="projects" className="py-24 md:py-32 px-6 section-light overflow-hidden relative">
+    <section ref={sectionRef} id="projects" className="py-24 md:py-32 px-6 section-light overflow-hidden relative gradient-mesh">
       {/* Decorative elements with parallax */}
       <div 
         className="absolute top-20 left-10 w-32 h-32 border border-foreground/5 rounded-full pointer-events-none transition-transform duration-100"

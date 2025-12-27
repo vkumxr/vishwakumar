@@ -73,7 +73,7 @@ const SkillsSection = () => {
   const scrollY = useScrollY();
 
   return (
-    <section ref={sectionRef} id="skills" className="py-24 md:py-32 px-6 section-light overflow-hidden relative grid-bg">
+    <section ref={sectionRef} id="skills" className="py-24 md:py-32 px-6 section-light overflow-hidden relative diagonal-stripes">
       {/* Faded background code elements with parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
         <div 

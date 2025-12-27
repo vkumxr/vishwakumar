@@ -300,6 +300,35 @@
       linear-gradient(90deg, hsl(var(--background) / 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
   }
+
+  /* Diagonal stripes background */
+  .diagonal-stripes {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      hsl(var(--foreground) / 0.02) 20px,
+      hsl(var(--foreground) / 0.02) 21px
+    );
+  }
+
+  /* Radial gradient background */
+  .radial-glow {
+    background: radial-gradient(ellipse at center, hsl(var(--foreground) / 0.03) 0%, transparent 70%);
+  }
+
+  /* Dotted pattern background */
+  .dotted-pattern {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Gradient mesh for sections */
+  .gradient-mesh {
+    background: 
+      radial-gradient(at 20% 80%, hsl(var(--primary) / 0.05) 0%, transparent 50%),
+      radial-gradient(at 80% 20%, hsl(var(--primary) / 0.03) 0%, transparent 50%);
+  }
 }
 
 @layer utilities {

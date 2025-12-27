@@ -42,15 +42,23 @@ const CertificationsSection = () => {
   const scrollY = useScrollY();
 
   return (
-    <section ref={sectionRef} id="certifications" className="py-20 md:py-24 px-6 section-light overflow-hidden relative">
-      {/* Decorative elements */}
+    <section ref={sectionRef} id="certifications" className="py-20 md:py-24 px-6 section-light overflow-hidden relative radial-glow">
+      {/* Decorative elements - geometric shapes */}
       <div 
-        className="absolute top-20 right-10 w-20 h-20 border border-foreground/5 rounded-lg rotate-12 pointer-events-none transition-transform duration-100"
+        className="absolute top-20 right-10 w-20 h-20 border-2 border-foreground/10 rounded-lg rotate-12 pointer-events-none transition-transform duration-100"
         style={{ transform: `rotate(12deg) translateY(${scrollY * 0.03}px)` }}
       />
       <div 
-        className="absolute bottom-20 left-10 w-16 h-16 border border-foreground/5 rounded-full pointer-events-none transition-transform duration-100"
-        style={{ transform: `translateY(${scrollY * -0.02}px)` }}
+        className="absolute top-40 right-32 w-8 h-8 border-2 border-foreground/10 rounded-full pointer-events-none transition-transform duration-100"
+        style={{ transform: `translateY(${scrollY * 0.02}px)` }}
+      />
+      <div 
+        className="absolute bottom-20 left-10 w-16 h-16 border-2 border-foreground/10 rotate-45 pointer-events-none transition-transform duration-100"
+        style={{ transform: `rotate(45deg) translateY(${scrollY * -0.02}px)` }}
+      />
+      <div 
+        className="absolute bottom-32 left-32 w-6 h-6 bg-foreground/5 rounded-full pointer-events-none transition-transform duration-100"
+        style={{ transform: `translateY(${scrollY * -0.03}px)` }}
       />
 
       <div ref={ref} className={`container mx-auto max-w-4xl relative z-10 ${isInView ? 'section-bounce' : 'opacity-0'}`}>

@@ -289,6 +289,55 @@
       opacity: 0.5;
     }
   }
+
+  /* Squircle Running Glow Border */
+  .squircle-glow {
+    position: relative;
+    overflow: visible;
+  }
+
+  .squircle-glow::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 10px;
+    background: conic-gradient(
+      from var(--glow-angle, 0deg),
+      transparent 0%,
+      transparent 25%,
+      hsl(var(--foreground)) 50%,
+      transparent 75%,
+      transparent 100%
+    );
+    animation: squircle-rotate 2.5s linear infinite;
+    opacity: 0.8;
+    z-index: -1;
+  }
+
+  .squircle-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 8px;
+    background: hsl(var(--background));
+    z-index: -1;
+  }
+
+  @keyframes squircle-rotate {
+    0% {
+      --glow-angle: 0deg;
+      transform: rotate(0deg);
+    }
+    100% {
+      --glow-angle: 360deg;
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Dark mode squircle glow */
+  .dark .squircle-glow::after {
+    background: hsl(var(--foreground));
+  }
 }
 
 /* Noise Texture */

@@ -6,13 +6,11 @@ import ExperienceSection from '../components/ExperienceSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
-import MorphingProfile from '../components/MorphingProfile';
 
 const Index = () => {
   return (
     <main className="relative min-h-screen bg-background overflow-x-hidden">
       <Navbar />
-      <MorphingProfile />
       
       <HeroSection />
       <AboutSection />

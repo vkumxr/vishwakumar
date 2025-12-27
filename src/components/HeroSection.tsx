@@ -247,13 +247,20 @@ const HeroSection = () => {
             <ArrowDown size={18} className="group-hover:translate-y-0.5 transition-transform" />
           </button>
           
-          {/* Hire Me - Center with glowing border */}
-          <button
-            onClick={openLinkedIn}
-            className="relative group inline-flex items-center justify-center px-8 py-3 rounded-md bg-foreground text-background font-semibold transition-all duration-200 hover:scale-105 shadow-[0_0_12px_rgba(0,0,0,0.25),0_0_24px_rgba(0,0,0,0.15)]"
-          >
-            Hire Me
-          </button>
+          {/* Hire Me - Center with squircle running glow border */}
+          <div className="relative">
+            <div className="absolute -inset-[3px] rounded-lg bg-gradient-to-r from-foreground via-foreground/50 to-foreground opacity-75 blur-sm animate-pulse" />
+            <div className="absolute -inset-[2px] rounded-lg overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-conic from-transparent via-foreground to-transparent animate-spin-slow" 
+                   style={{ animationDuration: '3s' }} />
+            </div>
+            <button
+              onClick={openLinkedIn}
+              className="relative inline-flex items-center justify-center px-8 py-3 rounded-md bg-foreground text-background font-semibold transition-all duration-200 hover:scale-105"
+            >
+              Hire Me
+            </button>
+          </div>
 
           {/* View Resume - Right */}
           <button

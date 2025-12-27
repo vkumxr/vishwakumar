@@ -99,6 +99,14 @@ export default {
         "blink": {
           "50%": { borderColor: "transparent" },
         },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "border-beam": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -109,6 +117,11 @@ export default {
         "slide-in-right": "slide-in-right 0.4s ease-out forwards",
         "typing": "typing 2s steps(30, end)",
         "blink": "blink 0.75s step-end infinite",
+        "spin-slow": "spin-slow 3s linear infinite",
+        "border-beam": "border-beam 3s linear infinite",
+      },
+      backgroundImage: {
+        'gradient-conic': 'conic-gradient(var(--tw-gradient-stops))',
       },
     },
   },

@@ -125,6 +125,24 @@
     @apply border-foreground/20;
   }
 
+  /* Glowing Card */
+  .card-glow {
+    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300 relative;
+  }
+
+  .card-glow::before {
+    content: '';
+    @apply absolute -inset-0.5 bg-gradient-to-r from-transparent via-foreground/20 to-transparent rounded-lg opacity-0 transition-opacity duration-500 -z-10 blur-sm;
+  }
+
+  .card-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  .card-glow:hover {
+    @apply border-foreground/30 shadow-lg;
+  }
+
   /* Section styles */
   .section-light {
     @apply bg-background text-foreground;
@@ -141,7 +159,7 @@
   }
 
   .skill-tag:hover {
-    @apply border-foreground/30;
+    @apply border-foreground/30 scale-105;
   }
 
   .skill-tag-inverted {
@@ -150,7 +168,7 @@
   }
 
   .skill-tag-inverted:hover {
-    @apply border-background/40 bg-background/15;
+    @apply border-background/40 bg-background/15 scale-105;
   }
 
   /* Social icons with hover animations */
@@ -179,6 +197,16 @@
     @apply absolute left-0 top-1 w-[15px] h-[15px] rounded-full bg-foreground border-4 border-background;
   }
 
+  /* Pulsing Timeline Dot */
+  .timeline-dot-pulse {
+    @apply absolute left-0 top-1 w-[15px] h-[15px] rounded-full bg-background border-4 border-foreground;
+  }
+
+  .timeline-dot-pulse::after {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-background/50 animate-ping;
+  }
+
   /* Section header */
   .section-header {
     @apply text-center mb-16;
@@ -190,6 +218,68 @@
 
   .section-title {
     @apply text-4xl md:text-5xl font-bold tracking-tight;
+  }
+
+  /* Shimmer effect for titles */
+  .shimmer-text {
+    @apply relative;
+    background: linear-gradient(
+      110deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--foreground)) 40%,
+      hsl(var(--foreground) / 0.5) 50%,
+      hsl(var(--foreground)) 60%,
+      hsl(var(--foreground)) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* Dark section shimmer */
+  .shimmer-text-light {
+    background: linear-gradient(
+      110deg,
+      hsl(var(--background)) 0%,
+      hsl(var(--background)) 40%,
+      hsl(var(--background) / 0.5) 50%,
+      hsl(var(--background)) 60%,
+      hsl(var(--background)) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* Corner accent */
+  .corner-accent {
+    @apply relative overflow-hidden;
+  }
+
+  .corner-accent::before {
+    content: '';
+    @apply absolute top-0 right-0 w-20 h-20 opacity-10;
+    background: radial-gradient(circle at top right, hsl(var(--foreground)), transparent 70%);
+  }
+
+  /* Decorative grid background */
+  .grid-bg {
+    background-image: 
+      linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Decorative grid background for dark sections */
+  .grid-bg-light {
+    background-image: 
+      linear-gradient(hsl(var(--background) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--background) / 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 }
 
@@ -447,4 +537,44 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-muted-foreground/50;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
+
+/* Gradient shift animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Gradient line animation */
+@keyframes gradient-line {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Glow pulse */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(var(--foreground) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(var(--foreground) / 0.4), 0 0 30px hsl(var(--foreground) / 0.2);
+  }
 }

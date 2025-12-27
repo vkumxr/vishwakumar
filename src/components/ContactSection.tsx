@@ -51,7 +51,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 px-6 section-dark overflow-hidden relative">
+    <section id="contact" className="py-24 md:py-32 px-6 section-dark overflow-hidden relative grid-bg-light">
       {/* Faded background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
         <div 
@@ -77,10 +77,13 @@ const ContactSection = () => {
         </div>
       </div>
 
+      {/* Gradient orbs */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-background/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+
       <div ref={ref} className={`container mx-auto max-w-4xl relative z-10 ${isInView ? 'section-bounce' : 'opacity-0'}`}>
         <div className="section-header">
-          <p className="section-label">Get in touch</p>
-          <h2 className="section-title">Contact</h2>
+          <p className="section-label text-background/60">Get in touch</p>
+          <h2 className="section-title shimmer-text-light">Contact</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">

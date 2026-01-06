@@ -1,4 +1,5 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import * as React from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ReactNode, useRef, MouseEvent } from 'react';
 
 interface MagneticButtonProps {
@@ -139,13 +140,11 @@ export const MagneticWrapper = ({
 interface CursorFollowerProps {
   className?: string;
   size?: number;
-  delay?: number;
 }
 
 export const CursorFollower = ({
   className = '',
   size = 20,
-  delay = 0.1,
 }: CursorFollowerProps) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -154,14 +153,15 @@ export const CursorFollower = ({
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
-  const handleMouseMove = (e: globalThis.MouseEvent) => {
-    x.set(e.clientX - size / 2);
-    y.set(e.clientY - size / 2);
-  };
+  React.useEffect(() => {
+    const handleMouseMove = (e: globalThis.MouseEvent) => {
+      x.set(e.clientX - size / 2);
+      y.set(e.clientY - size / 2);
+    };
 
-  if (typeof window !== 'undefined') {
     window.addEventListener('mousemove', handleMouseMove);
-  }
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [x, y, size]);
 
   return (
     <motion.div

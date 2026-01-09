@@ -84,7 +84,7 @@ const HeroSection = () => {
           >
             <img
               src={profileImage}
-              alt="Vishwa Kumar - AI & Cybersecurity Engineer"
+              alt="Vishwa Kumar Venkateswaran"
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -95,7 +95,7 @@ const HeroSection = () => {
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 font-display"
           variants={itemVariants}
         >
-          <span className="gradient-text">Vishwa Kumar</span>
+          <span className="gradient-text">Vishwa Kumar Venkateswaran</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -103,7 +103,7 @@ const HeroSection = () => {
           className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 max-w-2xl mx-auto"
           variants={itemVariants}
         >
-          AI & Cybersecurity Student
+          Passionate about AI, Cybersecurity & Backend Systems
         </motion.p>
 
         {/* Tagline */}

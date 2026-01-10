@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,75 +6,65 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 5%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 5%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 5%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 0 0% 5%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 0 0% 8%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 94%;
-    --secondary-foreground: 0 0% 15%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 0 0% 94%;
-    --accent-foreground: 0 0% 5%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
-    --ring: 0 0% 5%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 8%;
 
-    --radius: 1rem;
-    
-    /* Glassmorphism variables */
-    --glass-bg: 0 0% 100% / 0.7;
-    --glass-border: 0 0% 100% / 0.3;
-    --glass-shadow: 0 0% 0% / 0.1;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 2%;
+    --background: 0 0% 4%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 6%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 4%;
+    --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 2%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 85%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 0 0% 12%;
+    --accent: 0 0% 14%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
     --ring: 0 0% 98%;
-    
-    /* Glassmorphism variables - dark mode */
-    --glass-bg: 0 0% 100% / 0.08;
-    --glass-border: 0 0% 100% / 0.15;
-    --glass-shadow: 0 0% 0% / 0.3;
   }
 }
 
@@ -90,11 +80,6 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
-  }
-  
-  /* Display font for headings */
-  h1, h2, h3, .font-display {
-    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   }
 
   /* Add scroll margin for sections to account for fixed navbar */
@@ -157,38 +142,21 @@
 
   /* Cards */
   .card-clean {
-    @apply bg-card border border-border rounded-2xl p-6 transition-all duration-300;
+    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300;
   }
 
   .card-clean:hover {
     @apply border-foreground/20;
   }
 
-  /* Glassmorphism Card */
-  .glass-card {
-    @apply relative rounded-2xl p-6 transition-all duration-300;
-    background: hsl(var(--glass-bg));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--glass-border));
-    box-shadow: 0 8px 32px hsl(var(--glass-shadow));
-  }
-
-  .glass-card:hover {
-    background: hsl(var(--glass-bg));
-    border-color: hsl(var(--foreground) / 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 16px 48px hsl(var(--glass-shadow));
-  }
-
   /* Glowing Card */
   .card-glow {
-    @apply bg-card border border-border rounded-2xl p-6 transition-all duration-300 relative;
+    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300 relative;
   }
 
   .card-glow::before {
     content: '';
-    @apply absolute -inset-0.5 bg-gradient-to-r from-transparent via-foreground/20 to-transparent rounded-2xl opacity-0 transition-opacity duration-500 -z-10 blur-sm;
+    @apply absolute -inset-0.5 bg-gradient-to-r from-transparent via-foreground/20 to-transparent rounded-lg opacity-0 transition-opacity duration-500 -z-10 blur-sm;
   }
 
   .card-glow:hover::before {

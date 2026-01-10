@@ -10,12 +10,12 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Blog | Vishwa Kumar Venkateswaran</title>
+        <title>Blog | Vishwa Kumar</title>
         <meta 
           name="description" 
           content="Thoughts, ideas, and updates from my learning journey. Read articles about software engineering, technology, and development insights." 
         />
-        <meta property="og:title" content="Blog | Vishwa Kumar Venkateswaran" />
+        <meta property="og:title" content="Blog | Vishwa Kumar" />
         <meta property="og:description" content="Thoughts, ideas, and updates from my learning journey." />
         <meta property="og:type" content="website" />
         <link rel="canonical" href="/blog" />

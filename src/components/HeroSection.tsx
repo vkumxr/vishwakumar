@@ -249,7 +249,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Main H1 for SEO - Animated letter by letter */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2 text-foreground overflow-hidden">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-2 text-foreground overflow-hidden whitespace-nowrap">
           {heroTitle.split('').map((letter, i) => (
             <motion.span
               key={i}

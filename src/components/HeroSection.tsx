@@ -248,21 +248,34 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* Main H1 for SEO - Animated letter by letter */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-2 text-foreground overflow-hidden whitespace-nowrap">
-          {heroTitle.split('').map((letter, i) => (
-            <motion.span
-              key={i}
-              custom={i}
-              variants={letterVariants}
-              initial="hidden"
-              animate="visible"
-              className="inline-block"
-              style={{ display: letter === ' ' ? 'inline' : 'inline-block' }}
-            >
-              {letter === ' ' ? '\u00A0' : letter}
-            </motion.span>
-          ))}
+        {/* Main H1 for SEO - Two line name display */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2 text-foreground overflow-hidden text-center">
+          <span className="block">
+            {"Vishwa Kumar".split('').map((letter, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 + i * 0.03 }}
+                className="inline-block"
+              >
+                {letter === ' ' ? '\u00A0' : letter}
+              </motion.span>
+            ))}
+          </span>
+          <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-1 text-muted-foreground">
+            {"Venkateswaran".split('').map((letter, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.9 + i * 0.03 }}
+                className="inline-block"
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </span>
         </h1>
         
         <motion.p 

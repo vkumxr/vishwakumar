@@ -158,7 +158,7 @@ const HeroSection = () => {
     }),
   };
 
-  const heroTitle = "Vishwa Kumar";
+  const heroTitle = "Vishwa Kumar Venkateswaran";
   const heroSubtitle = "AI & Cybersecurity Student | Tooling + Reverse Engineering | Building ReDroid-AI";
 
   return (
@@ -242,7 +242,7 @@ const HeroSection = () => {
           >
             <img 
               src={profileImage} 
-              alt="Vishwa Kumar - AI & Cybersecurity Engineer" 
+              alt="Vishwa Kumar Venkateswaran - AI & Cybersecurity Engineer" 
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -310,7 +310,7 @@ const HeroSection = () => {
           {/* Download Resume - Right */}
           <motion.a
             href="/VISHWA-RESUME.pdf"
-            download="Vishwa_Kumar_Resume.pdf"
+            download="Vishwa_Kumar_Venkateswaran_Resume.pdf"
             className="group inline-flex items-center gap-2 px-6 py-3 rounded-md border border-foreground/30 text-foreground font-medium hover:bg-foreground/10 transition-colors duration-200"
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}

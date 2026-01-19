@@ -5,7 +5,7 @@ import { useScrollY } from '../hooks/useParallax';
 import { Code2, Wrench, Monitor, Shield } from 'lucide-react';
 import { staggerContainer, fadeUp, scaleUp, springPresets } from '../hooks/useMotionAnimations';
 import { HoverTilt } from './motion/GestureEffects';
-
+import { SkillsDecorations } from './DecorativeShapes';
 const skillCategories = [
   {
     title: 'Languages',
@@ -77,6 +77,8 @@ const SkillsSection = () => {
 
   return (
     <section ref={sectionRef} id="skills" className="py-24 md:py-32 px-6 section-light overflow-hidden relative diagonal-stripes">
+      {/* Decorative geometric shapes */}
+      <SkillsDecorations />
       {/* Faded background code elements with parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
         <div 

@@ -15,7 +15,8 @@ const FloatingDot = ({ className = '', parallaxSpeed = 0.02, delay = 0 }: ShapeP
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, delay }}
-      className={`absolute w-2 h-2 rounded-full bg-foreground/20 pointer-events-none ${className}`}
+      whileHover={{ scale: 1.3, opacity: 0.4, transition: { duration: 0.3 } }}
+      className={`absolute w-2 h-2 rounded-full bg-foreground/20 pointer-events-auto cursor-pointer ${className}`}
       style={{ transform: `translateY(${scrollY * parallaxSpeed}px)` }}
     />
   );
@@ -29,7 +30,8 @@ const FloatingRing = ({ className = '', parallaxSpeed = 0.03, delay = 0 }: Shape
       initial={{ opacity: 0, scale: 0, rotate: -45 }}
       animate={{ opacity: 1, scale: 1, rotate: 0 }}
       transition={{ duration: 0.8, delay }}
-      className={`absolute w-12 h-12 rounded-full border border-foreground/10 pointer-events-none ${className}`}
+      whileHover={{ scale: 1.3, opacity: 0.3, rotate: 180, transition: { duration: 0.6 } }}
+      className={`absolute w-12 h-12 rounded-full border border-foreground/10 pointer-events-auto cursor-pointer ${className}`}
       style={{ transform: `translateY(${scrollY * parallaxSpeed}px)` }}
     />
   );
@@ -43,7 +45,8 @@ const FloatingSquare = ({ className = '', parallaxSpeed = -0.02, delay = 0 }: Sh
       initial={{ opacity: 0, rotate: 45 }}
       animate={{ opacity: 1, rotate: 45 }}
       transition={{ duration: 0.7, delay }}
-      className={`absolute w-6 h-6 border border-foreground/10 pointer-events-none ${className}`}
+      whileHover={{ scale: 1.4, rotate: 135, opacity: 0.25, transition: { duration: 0.5 } }}
+      className={`absolute w-6 h-6 border border-foreground/10 pointer-events-auto cursor-pointer ${className}`}
       style={{ transform: `translateY(${scrollY * parallaxSpeed}px) rotate(45deg)` }}
     />
   );
@@ -57,7 +60,8 @@ const FloatingTriangle = ({ className = '', parallaxSpeed = 0.025, delay = 0 }: 
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, delay }}
-      className={`absolute pointer-events-none ${className}`}
+      whileHover={{ scale: 1.3, rotate: 60, opacity: 0.25, transition: { duration: 0.5 } }}
+      className={`absolute pointer-events-auto cursor-pointer ${className}`}
       style={{ transform: `translateY(${scrollY * parallaxSpeed}px)` }}
     >
       <svg width="20" height="18" viewBox="0 0 20 18" fill="none" className="text-foreground/10">
@@ -75,7 +79,8 @@ const FloatingCross = ({ className = '', parallaxSpeed = -0.015, delay = 0 }: Sh
       initial={{ opacity: 0, rotate: 0 }}
       animate={{ opacity: 1, rotate: 0 }}
       transition={{ duration: 0.5, delay }}
-      className={`absolute pointer-events-none ${className}`}
+      whileHover={{ rotate: 90, scale: 1.3, opacity: 0.3, transition: { duration: 0.4 } }}
+      className={`absolute pointer-events-auto cursor-pointer ${className}`}
       style={{ transform: `translateY(${scrollY * parallaxSpeed}px)` }}
     >
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-foreground/15">
@@ -93,7 +98,8 @@ const FloatingHexagon = ({ className = '', parallaxSpeed = 0.02, delay = 0 }: Sh
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.7, delay }}
-      className={`absolute pointer-events-none ${className}`}
+      whileHover={{ scale: 1.25, rotate: 30, opacity: 0.25, transition: { duration: 0.5 } }}
+      className={`absolute pointer-events-auto cursor-pointer ${className}`}
       style={{ transform: `translateY(${scrollY * parallaxSpeed}px)` }}
     >
       <svg width="24" height="28" viewBox="0 0 24 28" fill="none" className="text-foreground/10">
@@ -127,6 +133,15 @@ export const SkillsDecorations = () => (
     <FloatingSquare className="top-16 left-[8%]" parallaxSpeed={0.02} delay={0.1} />
     <FloatingTriangle className="top-32 right-[10%]" parallaxSpeed={-0.025} delay={0.2} />
     <FloatingDot className="bottom-24 right-[18%]" parallaxSpeed={0.015} delay={0.3} />
+    <FloatingCross className="bottom-40 left-[15%]" parallaxSpeed={-0.02} delay={0.4} />
+  </>
+);
+
+export const ExperienceDecorations = () => (
+  <>
+    <FloatingHexagon className="top-24 right-[12%]" parallaxSpeed={0.025} delay={0.2} />
+    <FloatingRing className="bottom-20 left-[8%]" parallaxSpeed={-0.02} delay={0.3} />
+    <FloatingSquare className="top-40 left-[5%]" parallaxSpeed={0.02} delay={0.4} />
   </>
 );
 

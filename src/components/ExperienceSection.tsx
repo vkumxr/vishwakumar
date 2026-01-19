@@ -5,7 +5,7 @@ import { useScrollY } from '../hooks/useParallax';
 import { Calendar, MapPin } from 'lucide-react';
 import { staggerContainer, fadeUp, springPresets } from '../hooks/useMotionAnimations';
 import { Parallax, ScaleOnScroll } from './motion/ScrollAnimations';
-
+import { ExperienceDecorations } from './DecorativeShapes';
 const experiences = [
   {
     title: 'Offensive Cyber Security Intern',
@@ -28,6 +28,9 @@ const ExperienceSection = () => {
 
   return (
     <section ref={sectionRef} id="experience" className="py-24 md:py-32 px-6 section-dark overflow-hidden relative grid-bg-light">
+      {/* Decorative geometric shapes */}
+      <ExperienceDecorations />
+      
       {/* Faded background terminal elements with parallax */}
       <Parallax offset={40} className="absolute top-1/4 right-10 hidden lg:block">
         <div className="text-background/[0.04] font-mono text-sm leading-relaxed select-none pointer-events-none">

@@ -13,8 +13,6 @@ import BackToTop from "@/components/BackToTop";
 import ScrollProgress from "@/components/ScrollProgress";
 import SideNavDots from "@/components/SideNavDots";
 import Index from "./pages/Index";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
 import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
 
@@ -59,32 +57,6 @@ const AnimatedRoutes = () => {
               variants={pageVariants}
             >
               <Index />
-            </motion.div>
-          }
-        />
-        <Route
-          path="/blog"
-          element={
-            <motion.div
-              initial="initial"
-              animate="enter"
-              exit="exit"
-              variants={pageVariants}
-            >
-              <Blog />
-            </motion.div>
-          }
-        />
-        <Route
-          path="/blog/:slug"
-          element={
-            <motion.div
-              initial="initial"
-              animate="enter"
-              exit="exit"
-              variants={pageVariants}
-            >
-              <BlogPost />
             </motion.div>
           }
         />

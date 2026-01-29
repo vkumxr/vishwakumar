@@ -9,7 +9,6 @@ const navItems = [
   { label: 'Skills', href: '#skills', isSection: true },
   { label: 'Experience', href: '#experience', isSection: true },
   { label: 'Projects', href: '#projects', isSection: true },
-  { label: 'Blog', href: '/blog', isSection: false },
   { label: 'Contact', href: '#contact', isSection: true },
 ];
 

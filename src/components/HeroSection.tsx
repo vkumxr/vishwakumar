@@ -121,47 +121,43 @@ const HeroSection = () => {
         initial="hidden"
         animate={showContent ? "visible" : "hidden"}
       >
-        {/* System status indicator */}
+        {/* Status indicator - subtle */}
         <motion.div 
-          className="flex items-center justify-center gap-3 mb-8"
+          className="flex items-center justify-center gap-3 mb-10"
           variants={itemVariants}
         >
           <div className="w-2 h-2 bg-primary rounded-full animate-glow-pulse" />
-          <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-            System Active • Secure Connection
+          <span className="font-sans text-xs text-muted-foreground uppercase tracking-widest">
+            Available for opportunities
           </span>
         </motion.div>
 
         {/* Identity header */}
-        <motion.div className="mb-6" variants={itemVariants}>
-          <div className="font-mono text-xs text-muted-foreground mb-3 tracking-widest">
-            IDENTITY:
+        <motion.div className="mb-8" variants={itemVariants}>
+          <div className="font-mono text-xs text-muted-foreground mb-4 tracking-widest uppercase">
+            Identity
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-bold tracking-tight text-primary name-pulse">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-bold tracking-tight text-foreground">
             VISHWA KUMAR
           </h1>
         </motion.div>
 
         {/* Role */}
-        <motion.div className="mb-8" variants={itemVariants}>
-          <div className="font-mono text-xs text-muted-foreground mb-3 tracking-widest">
-            ROLE:
-          </div>
+        <motion.div className="mb-10" variants={itemVariants}>
           <div className="flex items-center justify-center gap-3">
-            <Shield className="w-5 h-5 text-accent" />
-            <span className="font-mono text-lg md:text-xl text-foreground">
+            <Shield className="w-5 h-5 text-primary" />
+            <span className="font-sans text-lg md:text-xl text-muted-foreground">
               Cybersecurity & Reverse Engineering
             </span>
           </div>
         </motion.div>
 
-        {/* Typing tagline */}
+        {/* Typing tagline - cleaner presentation */}
         <motion.div 
-          className="mb-12 min-h-[60px]"
+          className="mb-14 min-h-[60px]"
           variants={itemVariants}
         >
-          <div className="font-mono text-base md:text-lg text-muted-foreground">
-            <span className="text-primary">$</span>{' '}
+          <div className="font-sans text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
             <CyclingTypewriter 
               phrases={focusAreas} 
               typeSpeed={40} 

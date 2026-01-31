@@ -1,27 +1,28 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
-// Floating particle with drift animation
-const DriftingParticle = ({ 
-  x, y, delay, size = 2, opacity = 0.3 
+// Soft floating particle
+const FloatingParticle = ({ 
+  x, y, delay, size = 2 
 }: { 
-  x: string; y: string; delay: number; size?: number; opacity?: number;
+  x: string; y: string; delay: number; size?: number;
 }) => (
   <motion.div
-    className="absolute rounded-full bg-primary"
+    className="absolute rounded-full"
     style={{ 
       left: x, 
       top: y, 
       width: size, 
       height: size,
+      background: 'hsl(var(--muted-foreground) / 0.15)',
     }}
     animate={{
-      y: [-20, 20, -20],
-      x: [-10, 10, -10],
-      opacity: [opacity * 0.5, opacity, opacity * 0.5],
+      y: [-15, 15, -15],
+      x: [-8, 8, -8],
+      opacity: [0.1, 0.25, 0.1],
     }}
     transition={{
-      duration: 15 + Math.random() * 10,
+      duration: 18 + Math.random() * 12,
       repeat: Infinity,
       delay,
       ease: 'easeInOut',
@@ -29,32 +30,7 @@ const DriftingParticle = ({
   />
 );
 
-// Subtle floating code fragment
-const CodeFragment = ({ x, y, delay }: { x: string; y: string; delay: number }) => {
-  const fragments = ['0x', '//', '{}', '[]', '=>', '&&', '||', '!=', '++', '--'];
-  const fragment = useMemo(() => fragments[Math.floor(Math.random() * fragments.length)], []);
-  
-  return (
-    <motion.div
-      className="absolute font-mono text-xs text-primary/10 select-none pointer-events-none"
-      style={{ left: x, top: y }}
-      animate={{
-        y: [-30, 30, -30],
-        opacity: [0.05, 0.15, 0.05],
-      }}
-      transition={{
-        duration: 20 + Math.random() * 10,
-        repeat: Infinity,
-        delay,
-        ease: 'easeInOut',
-      }}
-    >
-      {fragment}
-    </motion.div>
-  );
-};
-
-// Animated connection line
+// Subtle connection line - no color, just structure
 const ConnectionPath = ({ 
   startX, startY, endX, endY, delay 
 }: { 
@@ -66,13 +42,13 @@ const ConnectionPath = ({
       y1={startY}
       x2={endX}
       y2={endY}
-      stroke="hsl(var(--primary))"
+      stroke="hsl(var(--muted-foreground))"
       strokeWidth="0.5"
-      strokeOpacity="0.1"
+      strokeOpacity="0.06"
       initial={{ pathLength: 0 }}
       animate={{ pathLength: [0, 1, 0] }}
       transition={{
-        duration: 8,
+        duration: 12,
         repeat: Infinity,
         delay,
         ease: 'easeInOut',
@@ -81,120 +57,110 @@ const ConnectionPath = ({
   </svg>
 );
 
-// Radial gradient orb
+// Soft gradient orb - neutral colors
 const GradientOrb = ({ 
-  x, y, size, color, delay 
+  x, y, size, delay 
 }: { 
-  x: string; y: string; size: number; color: 'primary' | 'accent'; delay: number;
-}) => {
-  const colorVar = color === 'primary' ? 'var(--primary)' : 'var(--accent)';
-  
-  return (
-    <motion.div
-      className="absolute rounded-full pointer-events-none"
-      style={{
-        left: x,
-        top: y,
-        width: size,
-        height: size,
-        background: `radial-gradient(circle, hsl(${colorVar} / 0.15) 0%, transparent 70%)`,
-        filter: 'blur(40px)',
-        transform: 'translate(-50%, -50%)',
-      }}
-      animate={{
-        scale: [1, 1.2, 1],
-        opacity: [0.3, 0.5, 0.3],
-      }}
-      transition={{
-        duration: 10 + Math.random() * 5,
-        repeat: Infinity,
-        delay,
-        ease: 'easeInOut',
-      }}
-    />
-  );
-};
+  x: string; y: string; size: number; delay: number;
+}) => (
+  <motion.div
+    className="absolute rounded-full pointer-events-none"
+    style={{
+      left: x,
+      top: y,
+      width: size,
+      height: size,
+      background: 'radial-gradient(circle, hsl(var(--muted) / 0.4) 0%, transparent 70%)',
+      filter: 'blur(60px)',
+      transform: 'translate(-50%, -50%)',
+    }}
+    animate={{
+      scale: [1, 1.15, 1],
+      opacity: [0.2, 0.35, 0.2],
+    }}
+    transition={{
+      duration: 12 + Math.random() * 6,
+      repeat: Infinity,
+      delay,
+      ease: 'easeInOut',
+    }}
+  />
+);
 
 export const CyberBackground = () => {
   // Generate particles with varied positions
   const particles = useMemo(() => 
-    Array.from({ length: 20 }, (_, i) => ({
+    Array.from({ length: 15 }, (_, i) => ({
       id: i,
       x: `${5 + Math.random() * 90}%`,
       y: `${5 + Math.random() * 90}%`,
       delay: Math.random() * 5,
       size: 1 + Math.random() * 2,
-      opacity: 0.2 + Math.random() * 0.3,
     })), []
   );
 
-  // Code fragments for atmosphere
-  const codeFragments = useMemo(() => 
-    Array.from({ length: 8 }, (_, i) => ({
-      id: i,
-      x: `${10 + Math.random() * 80}%`,
-      y: `${10 + Math.random() * 80}%`,
-      delay: Math.random() * 8,
-    })), []
-  );
-
-  // Connection paths
+  // Connection paths - structural lines
   const connections = useMemo(() => [
-    { startX: '10%', startY: '20%', endX: '30%', endY: '40%', delay: 0 },
-    { startX: '70%', startY: '15%', endX: '85%', endY: '35%', delay: 2 },
-    { startX: '20%', startY: '70%', endX: '40%', endY: '85%', delay: 4 },
-    { startX: '60%', startY: '60%', endX: '80%', endY: '75%', delay: 6 },
+    { startX: '10%', startY: '20%', endX: '25%', endY: '35%', delay: 0 },
+    { startX: '75%', startY: '15%', endX: '88%', endY: '28%', delay: 3 },
+    { startX: '15%', startY: '75%', endX: '30%', endY: '88%', delay: 6 },
+    { startX: '65%', startY: '65%', endX: '78%', endY: '78%', delay: 9 },
   ], []);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-      {/* Base gradient background */}
+      {/* Base gradient background - charcoal with soft gradients */}
       <div 
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 50% 0%, hsl(220 15% 8%) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at 100% 100%, hsl(var(--primary) / 0.03) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at 0% 100%, hsl(var(--accent) / 0.03) 0%, transparent 50%),
-            hsl(220 15% 4%)
+            radial-gradient(ellipse 100% 60% at 50% 0%, hsl(220 12% 12%) 0%, transparent 50%),
+            radial-gradient(ellipse 80% 50% at 100% 100%, hsl(220 12% 10%) 0%, transparent 40%),
+            radial-gradient(ellipse 80% 50% at 0% 100%, hsl(220 12% 10%) 0%, transparent 40%),
+            hsl(220 12% 8%)
           `,
         }}
       />
 
-      {/* Animated grid */}
-      <div className="absolute inset-0 grid-animated opacity-40" />
+      {/* Subtle animated grid - very low opacity */}
+      <div className="absolute inset-0 opacity-20">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(hsl(var(--muted-foreground) / 0.03) 1px, transparent 1px),
+              linear-gradient(90deg, hsl(var(--muted-foreground) / 0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px',
+          }}
+        />
+      </div>
       
-      {/* Gradient orbs for depth */}
-      <GradientOrb x="20%" y="30%" size={400} color="primary" delay={0} />
-      <GradientOrb x="80%" y="60%" size={300} color="accent" delay={3} />
-      <GradientOrb x="50%" y="80%" size={350} color="primary" delay={6} />
+      {/* Gradient orbs for depth - neutral colors */}
+      <GradientOrb x="25%" y="30%" size={450} delay={0} />
+      <GradientOrb x="75%" y="65%" size={350} delay={4} />
+      <GradientOrb x="50%" y="85%" size={400} delay={8} />
 
-      {/* Connection paths */}
+      {/* Connection paths - subtle structure */}
       {connections.map((conn, i) => (
         <ConnectionPath key={i} {...conn} />
       ))}
 
-      {/* Floating particles */}
+      {/* Floating particles - neutral */}
       {particles.map((particle) => (
-        <DriftingParticle
+        <FloatingParticle
           key={particle.id}
           x={particle.x}
           y={particle.y}
           delay={particle.delay}
           size={particle.size}
-          opacity={particle.opacity}
         />
-      ))}
-
-      {/* Code fragments */}
-      {codeFragments.map((frag) => (
-        <CodeFragment key={frag.id} x={frag.x} y={frag.y} delay={frag.delay} />
       ))}
 
       {/* Vignette overlay */}
       <div className="vignette" />
 
-      {/* Noise texture */}
+      {/* Very subtle noise texture */}
       <div className="noise-overlay" />
     </div>
   );

@@ -6,45 +6,44 @@
 
 @layer base {
   :root {
-    /* Refined dark theme - less aggressive green */
-    --background: 220 15% 4%;
-    --foreground: 0 0% 85%;
+    /* Modern dark theme - charcoal base, minimal green */
+    --background: 220 12% 8%;
+    --foreground: 0 0% 92%;
 
-    --card: 220 15% 7%;
-    --card-foreground: 0 0% 85%;
+    --card: 220 12% 11%;
+    --card-foreground: 0 0% 90%;
 
-    --popover: 220 15% 6%;
-    --popover-foreground: 0 0% 85%;
+    --popover: 220 12% 10%;
+    --popover-foreground: 0 0% 90%;
 
-    /* Green used sparingly for highlights */
-    --primary: 142 60% 50%;
-    --primary-foreground: 220 15% 4%;
+    /* Green accent - used sparingly */
+    --primary: 160 55% 45%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 220 15% 12%;
-    --secondary-foreground: 0 0% 75%;
+    --secondary: 220 12% 16%;
+    --secondary-foreground: 0 0% 80%;
 
-    --muted: 220 10% 18%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 220 10% 22%;
+    --muted-foreground: 220 8% 55%;
 
-    /* Cyan accent */
-    --accent: 185 60% 50%;
-    --accent-foreground: 220 15% 4%;
+    /* Cyan secondary accent */
+    --accent: 185 50% 50%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62% 50%;
+    --destructive: 0 60% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 15%;
-    --input: 220 15% 12%;
-    --ring: 142 60% 50%;
+    --border: 220 12% 18%;
+    --input: 220 12% 14%;
+    --ring: 160 55% 45%;
 
-    --radius: 0.25rem;
+    --radius: 0.375rem;
     
-    /* Cyber-specific tokens */
-    --cyber-glow: 142 60% 50%;
-    --cyber-cyan: 185 60% 50%;
-    --cyber-dim: 220 10% 25%;
-    --cyber-gray: 220 10% 40%;
-    --scanline-opacity: 0.015;
+    /* Subtle accent tokens */
+    --glow-primary: 160 55% 45%;
+    --glow-cyan: 185 50% 50%;
+    --surface-dim: 220 10% 12%;
+    --text-dim: 220 8% 50%;
   }
 }
 
@@ -65,8 +64,8 @@
 
   /* Force dark theme */
   html, body {
-    background-color: hsl(220 15% 4%);
-    color: hsl(0 0% 85%);
+    background-color: hsl(220 12% 8%);
+    color: hsl(0 0% 92%);
   }
 
   section[id] {
@@ -259,18 +258,19 @@
     100% { background-position: 60px 60px; }
   }
 
-  /* Scanline overlay - very subtle */
+  /* Scanline overlay - extremely subtle, barely visible */
   .scanlines {
     pointer-events: none;
     position: fixed;
     inset: 0;
     z-index: 9999;
+    opacity: 0.3;
     background: repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 2px,
-      hsl(0 0% 50% / 0.02) 2px,
-      hsl(0 0% 50% / 0.02) 4px
+      transparent 3px,
+      hsl(0 0% 50% / 0.008) 3px,
+      hsl(0 0% 50% / 0.008) 6px
     );
   }
 
@@ -284,12 +284,12 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
-  /* Vignette */
+  /* Vignette - softer */
   .vignette {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, hsl(220 15% 4% / 0.6) 100%);
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 60%, hsl(220 12% 6% / 0.4) 100%);
   }
 
   /* Terminal glow overlay */
@@ -317,21 +317,17 @@
     51%, 100% { opacity: 0; }
   }
 
-  /* Subtle pulse for name */
+  /* Subtle pulse for name - very subtle */
   .name-pulse {
-    animation: name-glow-pulse 4s ease-in-out infinite;
+    animation: name-glow-pulse 6s ease-in-out infinite;
   }
 
   @keyframes name-glow-pulse {
     0%, 100% {
-      text-shadow: 
-        0 0 20px hsl(var(--primary) / 0.3),
-        0 0 40px hsl(var(--primary) / 0.15);
+      text-shadow: 0 0 30px hsl(var(--primary) / 0.15);
     }
     50% {
-      text-shadow: 
-        0 0 30px hsl(var(--primary) / 0.5),
-        0 0 60px hsl(var(--primary) / 0.25);
+      text-shadow: 0 0 40px hsl(var(--primary) / 0.25);
     }
   }
 

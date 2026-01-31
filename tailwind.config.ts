@@ -51,12 +51,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        cyber: {
-          glow: "hsl(var(--cyber-glow))",
-          cyan: "hsl(var(--cyber-cyan))",
-          dim: "hsl(var(--cyber-dim))",
-          gray: "hsl(var(--cyber-gray))",
+        surface: {
+          dim: "hsl(var(--surface-dim))",
         },
+        textDim: "hsl(var(--text-dim))",
       },
       borderRadius: {
         lg: "var(--radius)",
